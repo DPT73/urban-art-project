@@ -20,24 +20,7 @@ body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
     color: var(--charcoal);
-    background:
-        /* Grains béton */
-        radial-gradient(circle at 23% 45%, rgba(110,108,102,0.2) 1px, transparent 1px),
-        radial-gradient(circle at 67% 23%, rgba(115,112,108,0.15) 1.5px, transparent 1.5px),
-        radial-gradient(circle at 15% 78%, rgba(108,105,100,0.18) 1px, transparent 1px),
-        radial-gradient(circle at 89% 67%, rgba(112,109,105,0.16) 1px, transparent 1px),
-        radial-gradient(circle at 42% 12%, rgba(105,102,98,0.14) 1.2px, transparent 1.2px),
-        radial-gradient(circle at 78% 92%, rgba(113,110,106,0.17) 1px, transparent 1px),
-        /* Variations béton */
-        radial-gradient(ellipse at 18% 32%, rgba(95,93,90,0.12) 0%, transparent 35%),
-        radial-gradient(ellipse at 82% 68%, rgba(100,98,95,0.13) 0%, transparent 40%),
-        radial-gradient(ellipse at 48% 15%, rgba(97,95,92,0.11) 0%, transparent 30%),
-        /* Texture fine */
-        repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(0,0,0,0.025) 1px, rgba(0,0,0,0.025) 2px),
-        repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(0,0,0,0.02) 1px, rgba(0,0,0,0.02) 2px),
-        /* Base béton gris */
-        linear-gradient(135deg, #6b6863 0%, #706c68 15%, #686460 30%, #6e6a66 45%, #6a6662 60%, #656260 75%, #716d69 90%, #686460 100%);
-    background-attachment: fixed;
+    background: url('images/concrete-texture.jpg') center/cover no-repeat fixed, #6b6863;
     position: relative;
 }
 
