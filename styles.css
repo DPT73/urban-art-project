@@ -217,6 +217,34 @@ body::after {
     width: 100%;
 }
 
+.language-selector {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.lang-btn {
+    background: transparent;
+    border: 2px solid transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    opacity: 0.6;
+}
+
+.lang-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.lang-btn.active {
+    opacity: 1;
+    border-color: var(--accent);
+    box-shadow: 0 0 8px rgba(201, 169, 97, 0.3);
+}
+
 .hamburger {
     display: none;
     flex-direction: column;
@@ -884,6 +912,19 @@ footer .container {
 
     .nav-menu.active {
         left: 0;
+    }
+
+    .language-selector {
+        position: fixed;
+        top: 12px;
+        right: 60px;
+        z-index: 1002;
+        gap: 0.3rem;
+    }
+
+    .lang-btn {
+        font-size: 1.2rem;
+        padding: 0.2rem 0.3rem;
     }
 
     .hamburger {
