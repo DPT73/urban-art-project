@@ -253,8 +253,9 @@ body::after {
         linear-gradient(135deg, #454545 0%, #2a2a2a 100%);
     background-attachment: fixed;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    padding-top: 15vh;
     text-align: center;
     margin-top: 60px;
     position: relative;
@@ -280,6 +281,21 @@ body::after {
 .hero-content {
     color: var(--white);
     animation: fadeInUp 1.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hero-bust {
+    width: 180px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.hero-bust:hover {
+    transform: scale(1.05);
+    opacity: 1;
 }
 
 .hero-title {
