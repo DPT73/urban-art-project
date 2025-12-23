@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Art - Photographie & Sculptures</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .rebar {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.7;
+            transition: transform 0.1s linear;
+        }
+        .rebar-1 {
+            top: -10%;
+            left: 8%;
+            width: 8px;
+            height: 120%;
+            transform: rotate(45deg);
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    #5a3a28 0px,
+                    #6b4423 2px,
+                    #8b5a3c 3px,
+                    #6b4423 4px,
+                    #5a3a28 6px,
+                    #4a2a18 7px,
+                    #5a3a28 8px
+                ),
+                linear-gradient(90deg,
+                    rgba(0,0,0,0.4) 0%,
+                    transparent 20%,
+                    rgba(255,255,255,0.1) 50%,
+                    transparent 80%,
+                    rgba(0,0,0,0.4) 100%
+                );
+            border-radius: 4px;
+            box-shadow:
+                2px 4px 8px rgba(0,0,0,0.5),
+                inset -1px 0 2px rgba(0,0,0,0.6),
+                inset 1px 0 1px rgba(255,255,255,0.2);
+        }
+        .rebar-2 {
+            bottom: -10%;
+            right: 15%;
+            width: 8px;
+            height: 120%;
+            transform: rotate(-25deg);
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    #6a4530 0px,
+                    #7a4f2e 2px,
+                    #9a6f4e 3px,
+                    #7a4f2e 4px,
+                    #6a4530 6px,
+                    #5a3520 7px,
+                    #6a4530 8px
+                ),
+                linear-gradient(90deg,
+                    rgba(0,0,0,0.4) 0%,
+                    transparent 20%,
+                    rgba(255,255,255,0.1) 50%,
+                    transparent 80%,
+                    rgba(0,0,0,0.4) 100%
+                );
+            border-radius: 4px;
+            box-shadow:
+                2px 4px 8px rgba(0,0,0,0.5),
+                inset -1px 0 2px rgba(0,0,0,0.6),
+                inset 1px 0 1px rgba(255,255,255,0.2);
+        }
+    </style>
+    <script>
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const rebar1 = document.querySelector('.rebar-1');
+            const rebar2 = document.querySelector('.rebar-2');
+
+            const rotation1 = 45 + (scrolled * 0.05);
+            const rotation2 = -25 - (scrolled * 0.05);
+
+            rebar1.style.transform = `rotate(${rotation1}deg)`;
+            rebar2.style.transform = `rotate(${rotation2}deg)`;
+        });
+    </script>
+</head>
+<body>
+    <div class="rebar rebar-1"></div>
+    <div class="rebar rebar-2"></div>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">URBAN ART</div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#photography">Photographie</a></li>
+                    <li><a href="#sculptures">Sculptures</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Art Urbain</h1>
+            <p class="hero-subtitle">Photographie & Sculptures Contemporaines</p>
+            <a href="#photography" class="cta-button">Découvrir</a>
+        </div>
+    </section>
+
+    <section id="photography" class="photography-section">
+        <div class="container">
+            <h2 class="section-title">Photographie</h2>
+            <p class="section-description">Exploration urbaine à travers l'objectif</p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="urban">
+                    <img src="images/urban1.jpg" alt="Urban 1">
+                    <div class="gallery-overlay">
+                        <h3>Containers</h3>
+                        <p>Empilés comme nos vies / Rouille & promesses brisées</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="urban">
+                    <img src="images/urban2.jpg" alt="Urban 2">
+                    <div class="gallery-overlay">
+                        <h3>Façade</h3>
+                        <p>Derrière chaque fenêtre / Un loyer qui saigne</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="urban">
+                    <img src="images/urban3.jpg" alt="Urban 3">
+                    <div class="gallery-overlay">
+                        <h3>Portail</h3>
+                        <p>Les grilles se ferment / Pour qui reste dehors?</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="urban">
+                    <img src="images/urban4.jpg" alt="Urban 4">
+                    <div class="gallery-overlay">
+                        <h3>Béton</h3>
+                        <p>Jungle grise où pousse / L'indifférence quotidienne</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="urban">
+                    <img src="images/urban5.jpg" alt="Urban 5">
+                    <div class="gallery-overlay">
+                        <h3>Structure</h3>
+                        <p>Verticalité brutale / Chacun dans sa cage</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="urban">
+                    <img src="images/urban6.jpg" alt="Urban 6">
+                    <div class="gallery-overlay">
+                        <h3>Urbain</h3>
+                        <p>Métropole sans pitié / Luxe et misère dos à dos</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="urban">
+                    <img src="images/urban7.jpg" alt="Urban 7">
+                    <div class="gallery-overlay">
+                        <h3>Perspectives</h3>
+                        <p>Lignes de fuite infinies / Pour ceux qui courent encore</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="urban">
+                    <img src="images/urban8.jpg" alt="Urban 8">
+                    <div class="gallery-overlay">
+                        <h3>Infrastructure</h3>
+                        <p>Artères de métal / Pulsent le sang du capital</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="urban">
+                    <img src="images/urban9.jpg" alt="Urban 9">
+                    <div class="gallery-overlay">
+                        <h3>Minimalisme</h3>
+                        <p>Vide architectural / Plein de solitude</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="urban">
+                    <img src="images/urban10.jpg" alt="Urban 10">
+                    <div class="gallery-overlay">
+                        <h3>Texture</h3>
+                        <p>Chaque fissure raconte / Un rêve qui s'effrite</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="urban">
+                    <img src="images/urban11.jpg" alt="Urban 11">
+                    <div class="gallery-overlay">
+                        <h3>Contraste</h3>
+                        <p>Lumière pour les uns / Ombre pour les autres</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="urban">
+                    <img src="images/urban12.jpg" alt="Urban 12">
+                    <div class="gallery-overlay">
+                        <h3>Détails</h3>
+                        <p>Micro-agressions / En haute résolution</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="urban">
+                    <img src="images/urban13.jpg" alt="Urban 13">
+                    <div class="gallery-overlay">
+                        <h3>Monumental</h3>
+                        <p>Tours de Babel modernes / Où personne ne se parle</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="urban">
+                    <img src="images/urban14.jpg" alt="Urban 14">
+                    <div class="gallery-overlay">
+                        <h3>Composition</h3>
+                        <p>Équilibre factice / D'un monde bancal</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="urban">
+                    <img src="images/urban15.jpg" alt="Urban 15">
+                    <div class="gallery-overlay">
+                        <h3>Underground</h3>
+                        <p>Sous terre respire / La vraie vie des villes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sculptures" class="sculptures-section">
+        <div class="container">
+            <h2 class="section-title">Sculptures</h2>
+            <p class="section-description">Créations en béton & matériaux industriels</p>
+
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/art1.jpg" alt="Art 1">
+                        <span class="product-badge">Disponible</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Cerveau Connecté</h3>
+                        <p class="product-description">Connexions mortes / Réseaux sans humanité, 40x30cm</p>
+                        <p class="product-price">380€</p>
+                        <button class="buy-button">Acheter</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/art2.jpg" alt="Art 2">
+                        <span class="product-badge">Disponible</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Texture Lunaire</h3>
+                        <p class="product-description">Cratères urbains / Surface désolée, 50x40cm</p>
+                        <p class="product-price">290€</p>
+                        <button class="buy-button">Acheter</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/art3.jpg" alt="Art 3">
+                        <span class="product-badge">Disponible</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Surface Abstraite</h3>
+                        <p class="product-description">Chaos organisé / Beauté du délabrement, 45x35cm</p>
+                        <p class="product-price">320€</p>
+                        <button class="buy-button">Acheter</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/art4.jpg" alt="Art 4">
+                        <span class="product-badge sold-out">Vendu</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Matière Brute</h3>
+                        <p class="product-description">Peau de la ville / Cicatrices visibles, 60x45cm</p>
+                        <p class="product-price">450€</p>
+                        <button class="buy-button" disabled>Épuisé</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/art5.jpg" alt="Art 5">
+                        <span class="product-badge">Disponible</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Cratères</h3>
+                        <p class="product-description">Impacts du temps / Violence minérale, 50x40cm</p>
+                        <p class="product-price">410€</p>
+                        <button class="buy-button">Acheter</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/art6.jpg" alt="Art 6">
+                        <span class="product-badge">Disponible</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Relief Organique</h3>
+                        <p class="product-description">Mutations urbaines / Chair de pierre, 55x40cm</p>
+                        <p class="product-price">380€</p>
+                        <button class="buy-button">Acheter</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Restons en contact</h3>
+                    <p>Pour toute question sur les œuvres ou commande personnalisée</p>
+                    <div class="contact-details">
+                        <p><strong>Email:</strong> contact@urbanart.com</p>
+                        <p><strong>Téléphone:</strong> +33 1 23 45 67 89</p>
+                        <p><strong>Atelier:</strong> Paris, France</p>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Nom" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea placeholder="Message" rows="5" required></textarea>
+                    <button type="submit" class="submit-button">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Urban Art. Tous droits réservés.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Instagram">IG</a>
+                <a href="#" aria-label="Facebook">FB</a>
+                <a href="#" aria-label="Twitter">TW</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
