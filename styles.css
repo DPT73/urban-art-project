@@ -219,30 +219,82 @@ body::after {
 
 .language-selector {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.8rem;
     align-items: center;
 }
 
 .lang-btn {
     background: transparent;
-    border: 2px solid transparent;
-    font-size: 1.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
     cursor: pointer;
-    padding: 0.3rem 0.5rem;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    opacity: 0.6;
+    padding: 0;
+    border-radius: 6px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.7;
+    overflow: hidden;
+    position: relative;
+    width: 42px;
+    height: 28px;
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.flag-icon {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.lang-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
 }
 
 .lang-btn:hover {
     opacity: 1;
-    transform: scale(1.1);
+    transform: translateY(-3px) scale(1.08);
+    border-color: rgba(201, 169, 97, 0.6);
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.4),
+        0 0 0 3px rgba(201, 169, 97, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.lang-btn:hover .flag-icon {
+    transform: scale(1.05);
 }
 
 .lang-btn.active {
     opacity: 1;
     border-color: var(--accent);
-    box-shadow: 0 0 8px rgba(201, 169, 97, 0.3);
+    box-shadow:
+        0 4px 16px rgba(201, 169, 97, 0.4),
+        0 0 0 3px rgba(201, 169, 97, 0.3),
+        inset 0 2px 4px rgba(0, 0, 0, 0.1),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.lang-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px 2px 0 0;
+    box-shadow: 0 0 8px rgba(201, 169, 97, 0.6);
 }
 
 .hamburger {
@@ -916,15 +968,15 @@ footer .container {
 
     .language-selector {
         position: fixed;
-        top: 12px;
-        right: 60px;
+        top: 15px;
+        right: 65px;
         z-index: 1002;
-        gap: 0.3rem;
+        gap: 0.5rem;
     }
 
     .lang-btn {
-        font-size: 1.2rem;
-        padding: 0.2rem 0.3rem;
+        width: 32px;
+        height: 22px;
     }
 
     .hamburger {
