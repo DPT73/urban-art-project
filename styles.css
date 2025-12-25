@@ -1986,3 +1986,98 @@ footer .container {
         height: 28px;
     }
 }
+
+/* ============================================================================
+   FORM VALIDATION STYLES
+   ============================================================================ */
+
+/* Form error messages */
+.form-errors {
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.15) 0%, rgba(180, 40, 50, 0.1) 100%);
+    border: 1px solid rgba(220, 53, 69, 0.4);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-error {
+    color: #ff6b7a;
+    font-size: 0.9rem;
+    margin: 0;
+    padding: 0.25rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-error::before {
+    content: '!';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    background: rgba(220, 53, 69, 0.3);
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* Form success message */
+.form-success {
+    background: linear-gradient(135deg, rgba(40, 167, 69, 0.15) 0%, rgba(30, 130, 50, 0.1) 100%);
+    border: 1px solid rgba(40, 167, 69, 0.4);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    color: #6fdc8c;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-success::before {
+    content: '✓';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: rgba(40, 167, 69, 0.3);
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* Cart notification error state */
+.cart-notification.error {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+}
+
+/* Buy button click feedback */
+.buy-button.clicked {
+    transform: scale(0.95);
+    opacity: 0.8;
+}
+
+/* Improved input focus states */
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-color, #d4af37);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+
+/* Input validation states */
+.contact-form input:invalid:not(:placeholder-shown),
+.contact-form textarea:invalid:not(:placeholder-shown) {
+    border-color: rgba(220, 53, 69, 0.5);
+}
+
+.contact-form input:valid:not(:placeholder-shown),
+.contact-form textarea:valid:not(:placeholder-shown) {
+    border-color: rgba(40, 167, 69, 0.5);
+}
