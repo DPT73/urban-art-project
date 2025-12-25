@@ -1185,6 +1185,7 @@ footer .container {
         -webkit-tap-highlight-color: rgba(201, 169, 97, 0.2);
         user-select: none;
         -webkit-user-select: none;
+        touch-action: manipulation;
     }
 
     /* Remove hover states on touch devices */
@@ -1220,6 +1221,23 @@ footer .container {
     .product-image:hover img,
     .hero-bust:hover {
         transform: none;
+    }
+
+    /* Android-specific font rendering */
+    * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+    }
+
+    /* Fix Android Chrome address bar issues */
+    body {
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+    }
+
+    html {
+        height: -webkit-fill-available;
     }
 }
 
