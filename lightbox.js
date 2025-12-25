@@ -54,7 +54,11 @@ class Lightbox {
             });
 
             img.style.cursor = 'pointer';
-            img.addEventListener('click', () => this.open(index));
+            img.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.open(index);
+            });
         });
 
         // Product images
@@ -68,7 +72,11 @@ class Lightbox {
             });
 
             img.style.cursor = 'pointer';
-            img.addEventListener('click', () => this.open(startIndex + index));
+            img.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.open(startIndex + index);
+            });
         });
 
         // Hero bust image
@@ -82,10 +90,21 @@ class Lightbox {
             });
 
             heroBust.style.cursor = 'pointer';
-            heroBust.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.open(heroIndex);
-            });
+
+            // Prevent the parent link from triggering
+            const heroBustLink = heroBust.closest('a');
+            if (heroBustLink) {
+                heroBustLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.open(heroIndex);
+                });
+            } else {
+                heroBust.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.open(heroIndex);
+                });
+            }
         }
     }
 
