@@ -187,6 +187,14 @@
                         </svg>
                     </button>
                 </div>
+                <button class="cart-button" onclick="cart.openCart()" aria-label="Panier">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-badge">0</span>
+                </button>
                 <div class="hamburger">
                     <span></span>
                     <span></span>
@@ -195,6 +203,31 @@
             </div>
         </nav>
     </header>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal">
+        <div class="cart-modal-content">
+            <div class="cart-header">
+                <h2>Panier</h2>
+                <button class="close-cart" onclick="cart.closeCart()" aria-label="Fermer">×</button>
+            </div>
+            <div class="cart-body">
+                <div class="empty-cart" style="display: none;">
+                    <p>Votre panier est vide</p>
+                </div>
+                <div class="cart-items"></div>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span class="cart-total-amount">0.00€</span>
+                </div>
+                <button class="checkout-btn" onclick="cart.checkout()" disabled>
+                    Passer au paiement
+                </button>
+            </div>
+        </div>
+    </div>
 
     <section id="home" class="hero">
         <div class="hero-content">
@@ -457,6 +490,7 @@
     </footer>
 
     <script src="translations.js"></script>
+    <script src="cart.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

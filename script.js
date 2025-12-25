@@ -47,11 +47,24 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!this.disabled) {
                 const productCard = this.closest('.product-card');
                 const productName = productCard.querySelector('h3').textContent;
-                const productPrice = productCard.querySelector('.product-price').textContent;
+                const productPriceText = productCard.querySelector('.product-price').textContent;
+                const productDescription = productCard.querySelector('.product-description').textContent;
+                const productImage = productCard.querySelector('.product-image img').src;
 
-                if (confirm('Ajouter "' + productName + '" (' + productPrice + ') au panier ?')) {
-                    alert('Produit ajouté au panier !');
-                }
+                // Extract numeric price (remove € symbol and convert to number)
+                const productPrice = parseFloat(productPriceText.replace('€', '').replace(/\s/g, ''));
+
+                // Generate unique ID from product name
+                const productId = productName.toLowerCase().replace(/\s+/g, '-');
+
+                // Add to cart
+                cart.addItem({
+                    id: productId,
+                    name: productName,
+                    price: productPrice,
+                    description: productDescription,
+                    image: productImage
+                });
             }
         });
     });

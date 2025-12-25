@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement Réussi - Urban Art</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .success-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #1e1e1e 0%, #0a0a0a 100%);
+        }
+
+        .success-card {
+            background: rgba(26, 26, 26, 0.95);
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+            padding: 3rem;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            background: rgba(46, 213, 115, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .success-icon svg {
+            width: 50px;
+            height: 50px;
+            stroke: #2ed573;
+            stroke-width: 3;
+        }
+
+        .success-card h1 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .success-card p {
+            color: #ccc;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .order-details {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .order-details h2 {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .order-item {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(201, 169, 97, 0.2);
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .loading {
+            color: #ccc;
+            font-style: italic;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: 2px solid var(--accent);
+            background: transparent;
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="success-card">
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+            </div>
+            <h1>Paiement Réussi !</h1>
+            <p>Merci pour votre commande. Vous allez recevoir un email de confirmation avec les détails de votre achat.</p>
+
+            <div class="order-details" id="orderDetails">
+                <h2>Détails de la commande</h2>
+                <p class="loading">Chargement des informations...</p>
+            </div>
+
+            <div class="btn-group">
+                <a href="index.html" class="btn btn-primary">Retour à l'accueil</a>
+                <a href="index.html#sculptures" class="btn">Continuer mes achats</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Safe DOM creation helper
+        function createDetailItem(label, value) {
+            const p = document.createElement('p');
+            const strong = document.createElement('strong');
+            strong.textContent = label + ': ';
+            p.appendChild(strong);
+            p.appendChild(document.createTextNode(value));
+            return p;
+        }
+
+        // Get session ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('session_id');
+
+        if (sessionId) {
+            // Fetch session details
+            fetch('/api/checkout-session/' + sessionId)
+                .then(response => response.json())
+                .then(session => {
+                    const orderDetails = document.getElementById('orderDetails');
+
+                    // Clear existing content
+                    orderDetails.textContent = '';
+
+                    // Add title
+                    const title = document.createElement('h2');
+                    title.textContent = 'Détails de la commande';
+                    orderDetails.appendChild(title);
+
+                    // Add details safely
+                    orderDetails.appendChild(createDetailItem('Référence', session.id));
+                    orderDetails.appendChild(createDetailItem('Montant total', (session.amount_total / 100).toFixed(2) + '€'));
+                    orderDetails.appendChild(createDetailItem('Statut', 'Payé ✓'));
+
+                    if (session.customer_details && session.customer_details.email) {
+                        orderDetails.appendChild(createDetailItem('Email', session.customer_details.email));
+                    }
+
+                    // Clear cart
+                    localStorage.removeItem('urbanArtCart');
+                })
+                .catch(error => {
+                    console.error('Error fetching session:', error);
+                    const orderDetails = document.getElementById('orderDetails');
+                    orderDetails.textContent = '';
+
+                    const title = document.createElement('h2');
+                    title.textContent = 'Détails de la commande';
+                    orderDetails.appendChild(title);
+
+                    const errorMsg = document.createElement('p');
+                    errorMsg.textContent = 'Impossible de charger les détails. Veuillez vérifier votre email.';
+                    orderDetails.appendChild(errorMsg);
+                });
+        } else {
+            const orderDetails = document.getElementById('orderDetails');
+            orderDetails.textContent = '';
+
+            const title = document.createElement('h2');
+            title.textContent = 'Détails de la commande';
+            orderDetails.appendChild(title);
+
+            const noSessionMsg = document.createElement('p');
+            noSessionMsg.textContent = 'Aucune session trouvée.';
+            orderDetails.appendChild(noSessionMsg);
+        }
+    </script>
+</body>
+</html>
