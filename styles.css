@@ -361,6 +361,8 @@ body::after {
 .hero-content {
     color: var(--white);
     animation: fadeInUp 1.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    z-index: 10;
 }
 
 .hero-content a {
@@ -375,6 +377,8 @@ body::after {
     opacity: 0.95;
     box-shadow: 0 8px 24px rgba(0,0,0,0.6);
     transition: transform 0.4s ease, opacity 0.4s ease;
+    position: relative;
+    z-index: 10;
 }
 
 .hero-bust:hover {
